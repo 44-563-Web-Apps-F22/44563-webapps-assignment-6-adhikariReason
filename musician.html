@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Form By Reason
+		</title>
+	</head>
+ 
+<body>
+
+<h2>Musician guess by Reason Adhikari</h2>
+
+<form>
+    <label for="form1_secname">Enter the secret musician name</label>
+    <input type ="password" id="form1_secname" name="form1_secname" value="John Lennon"> <br>
+
+    <label for="form1_guess">Guess the musician</label>
+    <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
+
+    <input type="button" onclick="checkGuess()" value="Check the Guess">
+</form>
+
+<br>
+<div id="result">This is the result space</div>
+
+<script> 
+let correct =0;
+let wrong =0;
+
+function checkGuess(){
+    console.log("Getting names(input) from the form")
+    secname = document.getElementById("form1_secname").value
+    guess = document.getElementById("form1_guess").value
+    confirmed = confirm("Ready to submit?")
+    
+    out = document.getElementById("result")
+    if(confirmed){
+        if(secname.toLowerCase() == guess.toLowerCase()){
+			console.log("Value matched")
+			correct +=1
+			alert("You got it right! ")
+			out.innerHTML = "Wrong count: "+wrong+"\nCorrect count: "+correct
+		}else{
+			console.log("Value not matched")
+			wrong +=1;
+			alert("Wrong Musician")
+			out.innerHTML = "Wrong count: "+wrong+"\nCorrect count: "+correct
+			
+		}
+    } else {
+        out.innerHTML = "Please try again!"
+    }
+}
+</script>
+
+</body>
+</html> 
