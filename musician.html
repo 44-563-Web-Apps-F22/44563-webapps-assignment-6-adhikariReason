@@ -23,7 +23,7 @@
 <br>
 <div id="result">This is the result space</div>
 
-<script> 
+<script>
 let correct =0;
 let wrong =0;
 
@@ -51,6 +51,34 @@ function checkGuess(){
         out.innerHTML = "Please try again!"
     }
 }
+</script>
+<div>
+	<img src="ant.png" id="img-change" role="button" alt="Picture of ant" height="100" width="100" onclick="swapImage()"> 
+</div>
+<script>
+	let useImage =1;
+	function swapImage(){
+		console.log("Image clicked")
+		out = document.getElementById("img-change")
+		
+		console.log("img id:"+ out.src + useImage)
+		switch(useImage){
+			case 1:
+				out.src="dfly.png";
+				useImage =2;
+				break;
+			case 2:
+				out.src="ibug.png";
+				useImage=3;
+				break;
+
+			case 3:
+				out.src="ant.png";
+				useImage = 1;
+				break;
+		}
+		
+	}
 </script>
 
 </body>
