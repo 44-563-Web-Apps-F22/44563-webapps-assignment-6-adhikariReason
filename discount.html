@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>
+			Discount Page
+		</title>
+	</head>
+ 
+<body>
+
+<h2>Reason Adhikari computes Discounts</h2>
+
+
+<label for="amount">Enter base amount: </label>
+<input type ="number" id="amount" value="20" name="amount"> <br>
+
+<label for="discount">Enter the discount percentage: </label>
+<input type ="text" id="discount" name="discount" value="10"> <br>
+
+<input type="button" onclick="discount()" value="Apply discount">
+
+
+
+<p id="result"></p>
+
+<script> 
+function discount(){
+    console.log("Getting values")
+    amt = document.getElementById("amount").value
+    d_per = document.getElementById("discount").value
+    let result ="";
+    
+	for (let i=1; i<=5; i++){
+		let value = i * amt*(1-d_per/100);
+		result = result+ value+ " ";
+	}
+	document.getElementById("result").innerHTML= "Discounted amounts for base " + amt + " are " + result;
+}
+</script>
+
+</body>
+</html> 
