@@ -24,13 +24,25 @@
 	</label><br>
 	<input type="button" onclick="selectVacation()" value="Select a Vacation"><br>
 </form>
+<br>
+<form>
+    <label>
+		Enter a city
+		<input type="text" id="property" value="city">
+	</label><br>
+	<label>
+		Enter price
+		<input type="text" id="price" value="0">
+	</label><br>
+	<input type="button" onclick="updateVacation()" value="Update the Vacation"><br>
+</form><br>
 
-
+<br>
 <div id="vac_result"></div>
+<br>
 
 <script> 
 let my_vacation = {};
-
 function selectVacation() {
 	console.log("into the function")
 	my_vacation = {};
@@ -52,14 +64,24 @@ function selectVacation() {
 	}else{
 		my_vacation["Resort"] = "false";
 	}
-	// console.log(Object.keys(my_vacation).length + Object.values(my_vacation))
+	console.log(Object.keys(my_vacation).length + ", " + Object.values(my_vacation))
 	let result_string=""
 	for (const [key, val] of Object.entries(my_vacation)) {
   		 result_string += key + ":	" + val + "<br>"
 	}
 	document.getElementById("vac_result").innerHTML = result_string
+}
 
-
+function updateVacation() {
+	city = document.getElementById("property").value;
+	price = document.getElementById("price").value;
+	my_vacation["Property"] = city
+	my_vacation["Price"] = price
+	let result_string=""
+	for (const [key, val] of Object.entries(my_vacation)) {
+  		 result_string += key + ":	" + val + "<br>"
+	}
+	document.getElementById("vac_result").innerHTML = result_string
 }
 </script>
 
