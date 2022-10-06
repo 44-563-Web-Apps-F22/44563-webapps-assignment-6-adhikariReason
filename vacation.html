@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>
+		Vacation Plan
+	</title>
+</head>
+<body>
+
+<h2>Reason Adhikari selects a Vacation</h2>
+
+<form>
+    <label>
+		<input type="checkbox" id="air" value="True">
+		Travel by Air
+	</label><br>
+	<label>
+		<input type="checkbox" id="domestic" value="True">
+		Domestic
+	</label><br>
+	<label>
+		<input type="checkbox" id="resort" value="False">
+		Resort
+	</label><br>
+	<input type="button" onclick="selectVacation()" value="Select a Vacation"><br>
+</form>
+
+
+<div id="vac_result"></div>
+
+<script> 
+let my_vacation = {};
+
+function selectVacation() {
+	console.log("into the function")
+	my_vacation = {};
+	if(document.getElementById("air").checked == true){
+		my_vacation["Air"] = "true";
+	}
+	else{
+		my_vacation["Air"] = "false";
+	}
+
+	if(document.getElementById("domestic").checked == true){
+		my_vacation["Domestic"] = "true";
+	}else{
+		my_vacation["Domestic"] = "false";
+	}
+
+	if(document.getElementById("resort").checked == true){
+		my_vacation["Resort"] = "true";
+	}else{
+		my_vacation["Resort"] = "false";
+	}
+	// console.log(Object.keys(my_vacation).length + Object.values(my_vacation))
+	let result_string=""
+	for (const [key, val] of Object.entries(my_vacation)) {
+  		 result_string += key + ":	" + val + "<br>"
+	}
+	document.getElementById("vac_result").innerHTML = result_string
+
+
+}
+</script>
+
+</body>
+</html> 
