@@ -17,7 +17,7 @@
     <label for="form1_guess">Guess the musician</label>
     <input type ="text" id="form1_guess" name="form1_guess" autofocus> <br>
 
-    <input type="button" onclick="checkGuess()" value="Check the Guess">
+    <input type="button" onclick="checkGuess()" id="btn_check" value="Check the Guess">
 </form>
 
 <br>
@@ -28,29 +28,39 @@ let correct =0;
 let wrong =0;
 
 function checkGuess(){
-    console.log("Getting names(input) from the form")
+    console.log("Getting names(input) from the form   " + wrong)
+
+	if(wrong>2){
+		console.log (wrong + "  here in func")
+		alertOver()
+		return
+	}
     secname = document.getElementById("form1_secname").value
     guess = document.getElementById("form1_guess").value
-    confirmed = confirm("Ready to submit?")
     
     out = document.getElementById("result")
-    if(confirmed){
-        if(secname.toLowerCase() == guess.toLowerCase()){
-			console.log("Value matched")
-			correct +=1
-			alert("You got it right! ")
-			out.innerHTML = "Wrong count: "+wrong+"\nCorrect count: "+correct
-		}else{
-			console.log("Value not matched")
-			wrong +=1;
-			alert("Wrong Musician")
-			out.innerHTML = "Wrong count: "+wrong+"\nCorrect count: "+correct
-			
-		}
-    } else {
-        out.innerHTML = "Please try again!"
-    }
+
+	if(secname.toLowerCase() == guess.toLowerCase()){
+		console.log("Value matched")
+		correct +=1
+		alert("You got it right! ")
+		out.innerHTML = "Wrong count: "+wrong+"<br>Correct count: "+correct
+	}else{
+		console.log("Value not matched")
+		wrong +=1;
+		alert("Wrong Musician")
+		out.innerHTML = "Wrong count: "+wrong+"<br>Correct count: "+correct
+	}
+	function alertOver() {
+		alert("Sorry, Game Over")
+		wrong =0
+		correct =0
+		out.innerHTML = "Wrong count: "+wrong+"\nCorrect count: "+correct
+	}
+	
+
 }
+
 </script>
 <div>
 	<img src="ant.png" id="img-change" role="button" alt="Picture of ant" height="100" width="100" onclick="swapImage()"> 
