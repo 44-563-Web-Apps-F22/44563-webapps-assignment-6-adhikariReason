@@ -10,18 +10,17 @@
 
 <h2>Reason Adhikari computes Discounts</h2>
 
+<div>
+	<label for="amount">Enter base amount: </label>
+	<input type ="number" id="amount" value="20" name="amount"> <br>
 
-<label for="amount">Enter base amount: </label>
-<input type ="number" id="amount" value="20" name="amount"> <br>
+	<label for="discount">Enter the discount percentage: </label>
+	<input type ="text" id="discount" name="discount" value="10"> <br>
 
-<label for="discount">Enter the discount percentage: </label>
-<input type ="text" id="discount" name="discount" value="10"> <br>
+	<input type="button" onclick="discount()" value="Apply discount">
+	<p id="result"></p>
+</div>
 
-<input type="button" onclick="discount()" value="Apply discount">
-
-
-
-<p id="result"></p>
 
 <script> 
 function discount(){
@@ -36,7 +35,39 @@ function discount(){
 	}
 	document.getElementById("result").innerHTML= "Discounted amounts for base " + amt + " are " + result;
 }
+function chooseOp(){
+	console.log("Getting operator");
+	amt = document.getElementById("amount").value
+    d_per = document.getElementById("discount").value
+	let result =""
+	if(document.getElementById("times").checked == true){
+		result = amt*d_per
+		document.getElementById("times").checked = false;
+	}
+	if(document.getElementById("divide").checked == true){
+		result = amt/d_per
+		document.getElementById("divide").checked = false
+	}
+	if(document.getElementById("exponent").checked == true){
+		result = amt**d_per
+		document.getElementById("exponent").checked = false;
+	}
+	document.getElementById("result_calc").innerHTML = "Answer: " + result
+}
 </script>
+
+<form>
+	<label>
+		<input type = "radio" onClick = "chooseOp()" value="times" id="times">
+	*</label><br>
+	<label>
+		<input type = "radio" onClick = "chooseOp()" value="divide" id="divide">
+	/</label><br>
+	<label>
+		<input type = "radio" onClick = "chooseOp()" value="exponent" id="exponent">
+	**</label><br>
+	<div id="result_calc"></div>
+</form>
 
 </body>
 </html> 
